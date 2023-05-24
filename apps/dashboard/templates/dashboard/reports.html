@@ -1,0 +1,12 @@
+{% extends "dashboard/index.html" %}
+{% load static %}
+
+{% block content %}
+    {% include 'dashboard/reports_content.html' %}
+{% endblock %}
+
+{% block extrahead %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="{% static "dashboard/js/charts.js" %}"></script>
+{% endblock %}

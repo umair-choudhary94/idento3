@@ -1,0 +1,86 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="content">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <div id="signUpForm">
+                <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator active">
+                        <span>1</span>
+                    </span>
+                    <span class="stepIndicator active">2</span>
+                    <span class="stepIndicator">3</span>
+                    <span class="stepIndicator">4</span>
+                    <span class="stepIndicator">5</span>
+                    <span class="stepIndicator">6</span>
+                </div>
+            </div>
+            <h3>Select A Document</h3>
+            <p>Which document would you like to verify</p>
+            <form method="post" role="form" class="email-form">
+
+
+                <div class="form-group">
+                    <select name="document_type" id="document_type" class="form-control" type="dropdown"
+                            style="padding: 10px; width: 400px"
+                            onchange="
+                                    {#document.getElementById('document_type');#}
+                                    let element = document.getElementById('next');
+                                    element.classList.remove('non-active');
+                                    ">
+                        <option value="" disabled="" selected="" hidden="">Select A Document</option>
+                        {% for document_type in document_types %}
+                            <option value="{{ document_type }}"
+                                    class="form-control">{{ document_type }}</option>
+                        {% endfor %}
+                    </select>
+
+                </div>
+            </form>
+
+            {#        <Radio.Group onChange={onChange} value={data.document} class="option-doc">#}
+            {#            <Space direction="vertical">#}
+            {#                <Radio value={"Passport"}>Passport</Radio>#}
+            {#                <Radio value={"Identity Card#}
+            {#                "}>Identity Card</Radio>#}
+            {#                <Radio value={"Resident Visa#}
+            {#                "}>Resident Visa</Radio>#}
+            {#                <Radio value={"Drivers License#}
+            {#                "}>Drivers License</Radio>#}
+            {#                <Radio value={"Proof Of Address#}
+            {#                "}>Proof Of Address</Radio>#}
+            {#                <Radio value={"Document"}>Others</Radio>#}
+            {#            </Space>#}
+            {#        </Radio.Group>#}
+
+            {#            <div class="next_btn"></div>#}
+            {#                <div class={`next_btn ${data.country ?#}
+            {#                "" : "non-active"}`} onClick={()=>(data.country !== "") && inc()}>#}
+            {#                Next#}
+            {#            <div class="next_btn-c">#}
+            {#                    <ArrowRightOutlined/>#}
+            {#            </div>#}
+
+            <div class="next_btn non-active" id="next"
+                 onclick="let e = document.getElementById('document_type');
+                         let value = e.value;
+                         let text = e.options[e.selectedIndex].text;
+                         if (value !== ''){
+                         location.href=`{% url 'verification:fourth-page' %}?{{ request.GET.urlencode }}&document_type=${text}`
+                         }
+                         ">
+                Next
+                <div class="next_btn-c non-active">
+                    <div class="fp-b-c fas fa-search">
+                        <i class="bi bi-arrow-right-short" style="color: #005aaa"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Identipo</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="{% static "web/images/favicon.png" %}" rel="icon">
+    <link href="{% static "web/images/apple-touch-icon.png" %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static "web/vendor/aos/aos.css" %}" rel="stylesheet">
+    <link href="{% static "web/vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "web/vendor/bootstrap-icons/bootstrap-icons.css" %}" rel="stylesheet">
+    <link href="{% static "web/vendor/boxicons/css/boxicons.min.css" %}" rel="stylesheet">
+    <link href="{% static "web/vendor/boxicons/css/boxicons.css" %}" rel="stylesheet">
+    <link href="{% static "web/vendor/remixicon/remixicon.css" %}" rel="stylesheet">
+
+    <!-- Main CSS File -->
+{#    <link href="{% static "web/css/style.css" %}" rel="stylesheet">#}
+    <link href="{% static "css/verification.css" %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static "webcampicture/css/webcampicture.css" %}">
+</head>
+
+<body>
+
+{% block header %}
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+<!-- Vendor JS Files -->
+<script src="{% static "web/vendor/purecounter/purecounter_vanilla.js" %}"></script>
+<script src="{% static "web/vendor/aos/aos.js" %}"></script>
+<script src="{% static "web/vendor/bootstrap/js/bootstrap.bundle.min.js" %}"></script>
+
+
+<!-- Main JS File -->
+<script src="{% static "web/js/main.js" %}"></script>
+<script src="{% static "js/verification.js" %}"></script>
+{#<script src="{% static 'webcampicture/js/webcampicture.js' %}"></script>#}
+
+
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+<script src="https://jsuites.net/v4/jsuites.js"></script>
+<link rel="stylesheet" href="https://jsuites.net/v4/jsuites.css" type="text/css" />
+
+
+
+{% block extrajs %}
+{% endblock %}
+
+
+</body>
+
+</html>

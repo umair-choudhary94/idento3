@@ -1,0 +1,20 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="a-m">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <p>Identity Verification</p>
+            <div class="fp-b"
+                 onclick="location.href=`{% url 'verification:second-page' %}?{{ request.GET.urlencode }}&`">
+                Verify
+                <div class="fp-b-c fas fa-search">
+                    <i class="bi bi-arrow-right-short" style="color: #005aaa"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

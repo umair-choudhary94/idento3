@@ -1,0 +1,97 @@
+{% extends "verification/base.html" %}
+{% load static %}
+{% load reports %}
+
+{% csrf_token %}
+{% block content %}
+    <div class="m">
+        <div class="content">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <div id="signUpForm">
+                <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator active">
+                        <span>1</span>
+                    </span>
+                    <span class="stepIndicator active">2</span>
+                    <span class="stepIndicator active">3</span>
+                    <span class="stepIndicator active">4</span>
+                    <span class="stepIndicator">5</span>
+                    <span class="stepIndicator">6</span>
+                </div>
+            </div>
+            {#            <StepsComp current={4}/>#}
+            {#            <h3>Front of Your {data.document}</h3>#}
+            {#            <h3>Back of Your {data.document}</h3>#}
+            {#            {side === 1 ? <h3>Front of Your {data.document}</h3> : <h3>Back of Your {data.document}</h3>}#}
+            <p>Place the front of Your Document Into The Frame and take a clear photo</p>
+            <h6 id="help">Image will be captured automatically in 5 sec</h6>
+            <span id="num"
+                  style="color: white; background: linear-gradient(rgb(0, 90, 170) 100%, rgb(11, 71, 124) 100%); width: 50px; height: 50px; clip-path: circle(at 50% 50%); display: none; justify-content: center; align-items: center;">5</span>
+            <video id="video">Video stream not available.</video>
+            <button id="startbutton" style="display: none">Take photo</button>
+            <div style="display: none" id="foto">
+                <img style="" id="photo" alt="The screen capture will appear in this box."/>
+            </div>
+            {#                    </div>#}
+            <canvas id="canvas"></canvas>
+            <div id="retake" style="display: none" onclick="location.href='{{ request.get_full_path }}'" class="fp-b">
+                Re-Take
+                <div class="fp-b-c fas fa-search">
+                    <i class="bi bi-arrow-clockwise" style="color: #005aaa; font-size: x-large"></i>
+                </div>
+            </div>
+            {#            <span id="num"#}
+            {#                  style="color: white; background: linear-gradient(rgb(0, 90, 170) 100%, rgb(11, 71, 124) 100%); width: 50px; height: 50px; clip-path: circle(at 50% 50%); display: flex; justify-content: center; align-items: center;">5</span>#}
+            <div class="next_btn" style="display: none" id="next"
+                 onclick="{% if not has_back %}
+                     location.href=`{% url 'verification:sixth-page' %}?{{ request.GET.urlencode }}&temp=set_temp_selfie`
+                 {% else %}
+                     location.href=`{% url 'verification:fifth-page-b' %}?{{ request.GET.urlencode }}&temp=set_temp_back`
+                 {% endif %}
+                         ">
+                Next
+                <div class="next_btn-c">
+                    <div class="fp-b-c fas fa-search">
+                        <i class="bi bi-arrow-right-short" style="color: #005aaa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        let remaining = 7;
+        let num = document.getElementById('num');
+        num.style.display = "none";
+
+        function countdown() {
+            let num = document.getElementById('num');
+            num.innerHTML = remaining;
+            if (remaining < 6) {
+                num.style.display = "flex";
+                let help = document.getElementById('help');
+                help.style.display = "none";
+            }
+            if (!remaining--) {
+                document.getElementById('startbutton').click();
+                let video = document.getElementById('video');
+                let foto = document.getElementById('foto');
+                let retake = document.getElementById('retake');
+                document.getElementById('foto').style.display = "initial";
+                document.getElementById('retake').style.display = "inherit";
+                video.replaceWith(foto);
+                num.remove();
+                let element = document.getElementById('next');
+                element.style.display = "flex";
+                return; // not needed if you redirect
+            }
+            setTimeout(countdown, 1000);
+        }
+
+        window.onload = countdown;
+    </script>;
+{% endblock %}

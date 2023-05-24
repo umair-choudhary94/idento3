@@ -1,0 +1,59 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="content">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <div id="signUpForm">
+                <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator active">
+                        <span>1</span>
+                    </span>
+                    <span class="stepIndicator active">2</span>
+                    <span class="stepIndicator active">3</span>
+                    <span class="stepIndicator">4</span>
+                    <span class="stepIndicator">5</span>
+                    <span class="stepIndicator">6</span>
+                </div>
+            </div>
+
+            <h3>Confirm Documentation type</h3>
+            <p>Please Have Your {{ request.GET.document_type }} ready to verify</p>
+            <div class="dummy-webcam"
+                    {#        // style={{ width: "400px", height: "200px", background: "#E8E8E8" }}#}
+            ></div>
+            <p style="color: #005AAA99">
+                It'll take further steps and a selfie will be last and process will
+                finish
+            </p>
+            {#            <ScanOutlined style={{ fontSize: "100px", color: "#005AAA" }} onClick={inc}/>#}
+            {#                <p#}
+            {#                        onClick={inc}#}
+            {#                        style={{#}
+            {#                                cursor: "pointer",#}
+            {#                                textDecoration: "underline",#}
+            {#                                color: "#005AAA",#}
+            {#                                }}#}
+            {#                >#}
+            {#                    Scan Here#}
+            {#                </p>#}
+            {#        </div>#}
+
+            <span role="img" aria-label="scan" tabindex="-1" class="anticon anticon-scan"
+                  style="font-size: 100px; color: rgb(0, 90, 170);"
+                  onclick="location.href=`{% url 'verification:fifth-page' %}?{{ request.GET.urlencode }}`"
+            >
+                <svg viewBox="64 64 896 896" focusable="false"
+                     data-icon="scan" width="1em" height="1em"
+                     fill="currentColor" aria-hidden="true"><path
+                        d="M136 384h56c4.4 0 8-3.6 8-8V200h176c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H196c-37.6 0-68 30.4-68 68v180c0 4.4 3.6 8 8 8zm512-184h176v176c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8V196c0-37.6-30.4-68-68-68H648c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zM376 824H200V648c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v180c0 37.6 30.4 68 68 68h180c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm512-184h-56c-4.4 0-8 3.6-8 8v176H648c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h180c37.6 0 68-30.4 68-68V648c0-4.4-3.6-8-8-8zm16-164H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8z"></path></svg>
+            </span>
+            <p style="cursor: pointer; text-decoration: underline; color: rgb(0, 90, 170);"
+               onclick="location.href=`{% url 'verification:fifth-page' %}?{{ request.GET.urlencode }}&temp=set_temp_document`"
+            >Scan Here</p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,7 @@
+.webcampicture_video {
+    cursor: pointer;
+ }
+
+ .webcampicture_video:active {
+    filter: brightness(150%);
+ }

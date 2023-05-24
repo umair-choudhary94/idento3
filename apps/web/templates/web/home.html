@@ -1,0 +1,771 @@
+{% extends "web/base.html" %}
+{% load plans %}
+{% load static %}
+
+{% block extrastyle %}
+    <!-- Option 1: Include in HTML -->
+    {#    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">#}
+{% endblock %}
+{% block content %}
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <h1 data-aos="fade-up" style="color:white">Robust KYC Solutions for businesses</h1>
+                    <h2 data-aos="fade-up" data-aos-delay="400" style="color:white">
+                        A Versatile Solutions for verifying customer identity, simplifying the KYC registration
+                        process and managing the entire customer lifecycle.
+                    </h2>
+                    <div class="row">
+                        <div class="col-lg-4" data-aos="fade-up" data-aos-delay="800">
+                            <a href="{% url "web:register" %}" class="btn-get-started scrollto"
+                               style="color:white; border-color:white; font-size:inherit">Get Started</a>
+                        </div>
+                        <div class="col-lg-5" data-aos="fade-up" data-aos-delay="800">
+                            <a href="#" class="btn-get-started scrollto"
+                               style="color:white; border-color:white; font-size:inherit" onclick="lightbox_open();">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor"
+                                     class="bi bi-play-fill" viewBox="0 0 14 14">
+                                    <path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/>
+                                </svg>
+                                View Demo</a>
+                        </div>
+                    </div>
+                </div>
+                <div id="light">
+                    <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+                    <video id="VisaChipCardVideo" width="600" controls>
+                        <source src="{% static 'web/images/video.mp4' %}" type="video/mp4">
+                        <!--Browser does not support <video> tag -->
+                    </video>
+                </div>
+
+                <div id="fade" onClick="lightbox_close();"></div>
+
+                <div>
+                </div>
+
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="fade-left" data-aos-delay="200">
+                    <img src="{% static "web/images/ai-1.png" %}" class="img-fluid" alt="">
+                </div>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Clients Section ======= -->
+        <section id="clients" class="clients clients">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-1.png" %}" class="img-fluid" alt="" data-aos="zoom-in">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-2.png" %}" class="img-fluid" alt="" data-aos="zoom-in"
+                             data-aos-delay="100">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-3.png" %}" class="img-fluid" alt="" data-aos="zoom-in"
+                             data-aos-delay="200">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-4.png" %}" class="img-fluid" alt="" data-aos="zoom-in"
+                             data-aos-delay="300">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-5.png" %}" class="img-fluid" alt="" data-aos="zoom-in"
+                             data-aos-delay="400">
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <img src="{% static "web/images/client-6.png" %}" class="img-fluid" alt="" data-aos="zoom-in"
+                             data-aos-delay="500">
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Clients Section -->
+
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2>About Us</h2>
+                </div>
+
+                <div class="row content">
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+                        <p>
+                            We Use AI-powered enterprise risk intelligence. Our fraud detection platform helps digital
+                            businesses quickly identify transactional anomalies and pinpoint fraud using artificial
+                            intelligence and live-streaming visualizations.
+                        </p>
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Don't Fight Fraud!
+                            </li>
+                            <li><i class="ri-check-double-line"></i> We will fight the battle for you!
+                            </li>
+                            <li><i class="ri-check-double-line"></i> Try Identipo now
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-up" data-aos-delay="300">
+                        <p>
+                            Online Identity Verification
+                            We use AI tools that can detect Fraud in ID Check in several ways. It helps companies
+                            improve
+                            conversion rates, comply with AML and KYC regulations and better detect fraud while
+                            delivering a
+                            definitive yes/no decision in seconds.
+                        </p>
+                        <a href="#" class="btn-learn-more">Learn More</a>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End About Us Section -->
+
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="d-flex align-items-center">
+
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Services</h2>
+                    {#                    <p>Our wide range of identity verification services includes and are not limited to:</p>#}
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-lg-5 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h2 class="service-title" data-aos="fade-up">Identity Verification</h2>
+                        <h3 class="service-text" data-aos="fade-up" data-aos-delay="400">
+                            Identipo gives you the ability to manage your portfolios based on
+                            your risk tolerance. it provides the best tools to monitor potential fraud actions and allow
+                            you to suspend transaction. it provides the best tools to monitor potential fraud actions
+                            and allow you to suspend transaction.
+                        </h3>
+                    </div>
+                    <div class="col-lg-7 order-1 order-lg-2 text-center" data-aos="fade-left" data-aos-delay="200">
+                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="700" height="250" fill="#2255e6"
+                             class="bi bi-person-vcard img-fluid" viewBox="0 0 16 16">
+                            <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>
+                            <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>
+                        </svg> {% endcomment %}
+                        {% comment %} <i class="bi bi-person-check" style="font-size:200px;color:#2255e6;"></i> {% endcomment %}
+                        <img
+             src="{% static "web/images/identityverification.jpg" %}" style="width:80%;">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-7  text-center"
+                         data-aos="fade-right" data-aos-delay="150">
+                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="700" height="250" fill="#2255e6"
+                             class="bi bi-eye img-fluid" viewBox="0 0 16 16">
+                            <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                            <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                        </svg> {% endcomment %}
+                        {% comment %} <i class="bi bi-file-text" style="font-size:200px;color:#2255e6;"></i> {% endcomment %}
+                        <img
+             src="{% static "web/images/Business-Verification.png" %}" style="width:80%;">
+                    </div>
+
+                    <div class="col-lg-5 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-right"
+                         data-aos-delay="300">
+                        <div class="content d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-lg-12 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                                    <h2 class="service-title" data-aos="fade-up">Business Verification</h2>
+                                    <h3 class="service-text" data-aos="fade-up" data-aos-delay="400">
+                                        Identipo gives you the ability to manage your portfolios based on
+                                        your risk tolerance. it provides the best tools to monitor potential fraud
+                                        actions and allow you to suspend transaction. it provides the best tools to
+                                        monitor potential fraud actions and allow
+                                        you to suspend transaction.
+                                    </h3>
+                                </div>
+                            </div>
+                        </div><!-- End .content-->
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-lg-5 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                        <h2 class="service-title" data-aos="fade-up">Address Verification</h2>
+                        <h3 class="service-text" data-aos="fade-up" data-aos-delay="400">
+                            Identipo gives you the ability to manage your portfolios based on
+                            your risk tolerance. it provides the best tools to monitor potential fraud actions and allow
+                            you to suspend transaction. it provides the best tools to monitor potential fraud actions
+                            and allow you to suspend transaction.
+                        </h3>
+                    </div>
+                    <div class="col-lg-7 text-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="200">
+                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="700" height="250" fill="#2255e6"
+                             class="bi bi-geo img-fluid" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                        </svg> {% endcomment %}
+                        {% comment %} <i class="bi bi-geo-alt" style="font-size:200px;color:#2255e6;"></i> {% endcomment %}
+                        <img
+             src="{% static "web/images/Address-Verification.png" %}" style="width:80%;">
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </section><!-- End Hero -->
+
+        {#        <section id="services" class="services">#}
+        {#            <div class="container">#}
+        {##}
+        {#                <div class="section-title" data-aos="fade-up">#}
+        {#                    <h2>Our Services</h2>#}
+        {#                <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fug</p>#}
+        {#                </div>#}
+        {##}
+        {#                <div class="row">#}
+        {#                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">#}
+        {#                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">#}
+        {#                            <div class="icon"><i class="">#}
+        {#                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"#}
+        {#                                     class="bi bi-person-vcard" viewBox="0 0 16 16">#}
+        {#                                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>#}
+        {#                                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>#}
+        {#                                </svg>#}
+        {#                            </i></div>#}
+        {#                            <h4 class="title"><a href="">Identity Verification</a></h4>#}
+        {#                            <p class="description">Account Opening & Fraud Prevention, ID Checks, account verification#}
+        {#                                accelerate customer acceptance with less friction. While Businesses endeavour to#}
+        {#                                safeguard#}
+        {#                                against Fraud and other nefarious activities,We have built the bestfraud prevention#}
+        {#                                tools to#}
+        {#                                help in the fight.</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {##}
+        {#                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">#}
+        {#                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">#}
+        {#                            <div class="icon"><i class="">#}
+
+        {#                            </i></div>#}
+        {#                            <h4 class="title"><a href="">Facial Recognition</a></h4>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {##}
+        {#                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">#}
+        {#                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">#}
+        {#                            <div class="icon"><i class="">#}
+
+        {#                            </i></div>#}
+        {#                            <h4 class="title"><a href="">Address Verification</a></h4>#}
+        {#                            <p class="description">Our high tech fraud prevention tool is designed to meet your#}
+        {#                                eCommerce#}
+        {#                                needs, increase revenues and eliminate chargebacks. Improve customer experience as we#}
+        {#                                make#}
+        {#                                it possible for orders to be approve without manual review.</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {##}
+        {#                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">#}
+        {#                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">#}
+        {#                            <div class="icon"><i class="">#}
+        {#                                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"#}
+        {#                                     class="bi bi-person-vcard" viewBox="0 0 16 16">#}
+        {#                                    <path d="M5 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm4-2.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5ZM9 8a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4A.5.5 0 0 1 9 8Zm1 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5Z"/>#}
+        {#                                    <path d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H8.96c.026-.163.04-.33.04-.5C9 10.567 7.21 9 5 9c-2.086 0-3.8 1.398-3.984 3.181A1.006 1.006 0 0 1 1 12V4Z"/>#}
+        {#                                </svg>#}
+        {#                            </i></div>#}
+        {#                            <h4 class="title"><a href="">Passport Verification#}
+        {#                            </a></h4>#}
+        {#                            <p class="description">With your Mobile device you can monitor your online businesses with#}
+        {#                                our#}
+        {#                                well built rule engine. Alert and Signals will reach you within seconds of actions,#}
+        {#                                trace#}
+        {#                                and investigate with our technology!</p>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {##}
+        {#                </div>#}
+        {##}
+        {#            </div>#}
+        {#        </section><!-- End Services Section -->#}
+
+
+        <!-- ======= Pricing Section ======= -->
+        <section id="pricing" class="pricing">
+            <div class="container">
+
+                <div class="section-title">
+                    <h2>Pricing</h2>
+                    <p>Have you tried Identipo? 15 days of free access, no card required</p>
+                </div>
+
+                <div class="row">
+                    {% for plan in plans %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="box" data-aos="zoom-in-right" data-aos-delay="200">
+                                <h3>{{ plan.title }}</h3>
+                                <h4><sup>{{ plan.currency.symbol }}</sup>{{ plan.price }}<span> / month</span></h4>
+                                <ul>
+                                    {% for d in plan.desc %}
+                                        <li>{{ d }}</li>
+                                    {% endfor %}
+                                </ul>
+
+                                <div class="btn-wrap">
+                                    <a href="/payment/plans/" class="btn-buy">Buy Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section><!-- End Pricing Section -->
+
+
+        <!-- ======= Feedback Section ======= -->
+        <section id="feedback" class="services">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Customer Feedback</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <img class="clipped" width="100" height="100" src="{% static "web/images/boy1.jpeg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Preston Short, CEO</a></h4>
+                            <p class="description"><q><i>Identipo is all I need in order to manage my employees.
+                                I highly recommend it for any running business to make use of this great
+                                product.</i></q>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <img class="clipped" width="100" height="100" src="{% static "web/images/girl1.jpg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Jonas Rain, Founder</a></h4>
+                            <p class="description"><q><i>Identipo is all I need in order to manage my employees.
+                                I highly recommend it for any running business to make use of this great product.
+                                Identipo is all I need in order to manage my employees.
+                                I highly recommend it for any running business to make use of this great
+                                product.</i></q></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <img class="clipped" width="100" height="100" src="{% static "web/images/girl2.jpeg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Kendra Luna, Manager</a></h4>
+                            <p class="description"><q><i>Identipo is all I need in order to manage my employees.
+                                I highly recommend it for any running business to make use of this great
+                                product.</i></q></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Feedback Section -->
+
+        <!-- ======= Counts Section ======= -->
+        <section id="counts" class="counts">
+            <div class="container">
+                <div class="row">
+                    <div class="image col-xl-4 d-flex align-items-stretch justify-content-center justify-content-xl-start"
+                         data-aos="fade-right" data-aos-delay="150">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="280" height="280" fill="#2255e6"
+                             class="bi bi-award img-fluid" viewBox="0 0 16 16">
+                            <path d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z"/>
+                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                        </svg>
+                    </div>
+
+                    <div class="col-xl-7 d-flex align-items-stretch pt-4 pt-xl-0" data-aos="fade-left"
+                         data-aos-delay="300">
+                        <div class="content d-flex flex-column justify-content-center">
+                            <div class="row">
+                                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                    <div class="count-box">
+                                        <i class="bi bi-emoji-smile"></i>
+                                        <span data-purecounter-start="0" data-purecounter-end="65"
+                                              data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Happy Clients</strong> are using our services</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                    <div class="count-box">
+                                        <i class="bi bi-journal-richtext"></i>
+                                        <span data-purecounter-start="0" data-purecounter-end="2500"
+                                              data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Verifications</strong> have been made via Identipo</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                    <div class="count-box">
+                                        <i class="bi bi-clock"></i>
+                                        <span data-purecounter-start="0" data-purecounter-end="10"
+                                              data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Years of experience</strong> building KYC solutions</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 d-md-flex align-items-md-stretch">
+                                    <div class="count-box">
+                                        <i class="bi bi-award"></i>
+                                        <span data-purecounter-start="0" data-purecounter-end="2"
+                                              data-purecounter-duration="1" class="purecounter"></span>
+                                        <p><strong>Awards</strong> for being the top KYC software of the year</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- End .content-->
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Counts Section -->
+
+        <!-- ======= F.A.Q Section ======= -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="ri-question-line"></i>
+                        <h4>Who is Identipo for?</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>
+                            Whether an individual, a company, bank or institute, you can reap benefits of Identipo for
+                            you customers or employee verifications.
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="ri-question-line"></i>
+                        <h4>Who is Identipo for?</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>
+                            Whether an individual, a company, bank or institute, you can reap benefits of Identipo for
+                            you customers or employee verifications.
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="ri-question-line"></i>
+                        <h4>Who is Identipo for?</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>
+                            Whether an individual, a company, bank or institute, you can reap benefits of Identipo for
+                            you customers or employee verifications.
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="ri-question-line"></i>
+                        <h4>Who is Identipo for?</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>
+                            Whether an individual, a company, bank or institute, you can reap benefits of Identipo for
+                            you customers or employee verifications.
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="col-lg-2">
+                    </div>
+                    <div class="col-lg-3">
+                        <i class="ri-question-line"></i>
+                        <h4>Who is Identipo for?</h4>
+                    </div>
+                    <div class="col-lg-5">
+                        <p>
+                            Whether an individual, a company, bank or institute, you can reap benefits of Identipo for
+                            you customers or employee verifications.
+                        </p>
+                    </div>
+                </div><!-- End F.A.Q Item-->
+
+            </div>
+        </section><!-- End F.A.Q Section
+         -->
+
+        <!-- ======= Team Section ======= -->
+        <section id="team" class="services">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2>Team</h2>
+                    <p>We are a team of experts who are passionate about their work.</p>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <img class="clipped" width="100" height="100" src="{% static "web/images/team-boy.jpeg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Preston Short, CEO</a></h4>
+                            <p class="description"><q><i>I created Identipo in order to make the world a better
+                                place.</i></q>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <img class="clipped" width="100" height="100"
+                                 src="{% static "web/images/team-girl.jpeg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Jonas Rain, Founder</a></h4>
+                            <p class="description"><q><i>I created Identipo in order to make the world a better
+                                place.</i></q></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <img class="clipped" width="100" height="100"
+                                 src="{% static "web/images/team-girl2.jpeg" %}">
+                            <br>
+                            <br>
+                            <h4 class="title"><a href="">Kendra Luna, Developer</a></h4>
+                            <p class="description"><q><i>I created Identipo in order to make the world a better
+                                place.</i></q></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- End F.A.Q Section -->
+        {#        <section id="api" class="faq">#}
+        {#            <div class="container">#}
+        {#                <div class="section-title" data-aos="fade-up">#}
+        {#                    <h2>API</h2>#}
+        {#                </div>#}
+        {##}
+        {#                <div class="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">#}
+        {#                    <div class="col-lg-5">#}
+        {#                        <i class="ri-question-line"></i>#}
+        {#                        <h4>Non consectetur a erat nam at lectus urna duis?</h4>#}
+        {#                    </div>#}
+        {#                    <div class="col-lg-7">#}
+        {#                        <p>#}
+        {#                            Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non#}
+        {#                            curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.#}
+        {#                        </p>#}
+        {#                    </div>#}
+        {#                </div><!-- End F.A.Q Item-->#}
+        {##}
+        {##}
+        {#            </div>#}
+        {#        </section><!-- End F.A.Q Section -->#}
+
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container">
+
+                {% comment %} <div class="section-title" data-aos="fade-up">
+                    <h2>Contact Us</h2>
+                </div> {% endcomment %}
+
+                <div class="row">
+                   
+                    <div class="col-md-8 mx-auto" data-aos="fade-up" data-aos-delay="300">
+                        <div>
+                            <p>Subscribe to our newsletter:</p>
+                        </div>
+                        <form method="post" role="form" class="email-form" id="newsletterForm">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" id="email"
+                                       placeholder="Your Email"
+                                       required>
+                            </div>
+                            <div class="">
+                                <button type="button" class="btn btn-primary" id="newsletterButton"
+                                        onclick="subscribeToNewsletter(this.form)" href="#">Subscribe
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Section -->
+
+    </main><!-- End #main -->
+{% endblock %}
+
+
+{% block footer %}
+    {% comment %} <!-- ======= Footer ======= -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row d-flex align-items-center">
+                <div class="col-lg-12 text-center">
+                    <div class="copyright">
+                        &copy; Copyright <strong>Identipo</strong>. All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- End Footer --> {% endcomment %}
+
+    <!-- Footer -->
+<footer class="text-center text-lg-start  text-white" style="background-color:#2255e6;">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+      <!-- Left -->
+      <div class="me-5 d-none d-lg-block">
+        <span>Get connected with us on social networks:</span>
+      </div>
+      <!-- Left -->
+  
+      <!-- Right -->
+      <div>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-facebook text-white"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-twitter text-white"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-google text-white"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+            <i class="bi bi-instagram text-white"></i>
+        </a>
+        <a href="" class="me-4 text-reset">
+          <i class="bi bi-linkedin text-white"></i>
+        </a>
+        
+      </div>
+      <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+  
+    <!-- Section: Links  -->
+    <section class="">
+      <div class="container text-center text-md-start mt-5">
+        <!-- Grid row -->
+        <div class="row mt-3">
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <!-- Content -->
+            
+             <img
+             src="{% static "web/images/logo-white.png" %}" style="width:80%;">
+           
+            <p>
+              Here you can use rows and columns to organize your footer content. Lorem ipsum
+              dolor sit amet, consectetur adipisicing elit.
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              API
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Demo</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Working</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Blog</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Releases</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">
+              Useful links
+            </h6>
+            <p>
+              <a href="#!" class="text-reset">Pricing</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Plans</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">News</a>
+            </p>
+            <p>
+              <a href="#!" class="text-reset">Help</a>
+            </p>
+          </div>
+          <!-- Grid column -->
+  
+          <!-- Grid column -->
+          <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+            <!-- Links -->
+            <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+            <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+            <p>
+              <i class="fas fa-envelope me-3"></i>
+              info@example.com
+            </p>
+            <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+            <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row -->
+      </div>
+    </section>
+    <!-- Section: Links  -->
+  
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+      © 2023 Copyright:
+      <a class="text-reset fw-bold" href="https://identipo.com/">identipo.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+{% endblock %}

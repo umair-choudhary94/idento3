@@ -1,0 +1,110 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="content">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <div id="signUpForm">
+                <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator active">
+                        <span>1</span>
+                    </span>
+                    <span class="stepIndicator active">2</span>
+                    <span class="stepIndicator active">3</span>
+                    <span class="stepIndicator active">4</span>
+                    <span class="stepIndicator active">5</span>
+                    <span class="stepIndicator active">6</span>
+                </div>
+            </div>
+            <h3>Analyzing Your Verifications</h3>
+            <p>Please wait while we set things up for you</p>
+            <div style="width: 150px; height: 150px; clip-path: circle(at 50% 50%); background: linear-gradient(rgb(0, 90, 170) 100%, rgb(11, 71, 124) 100%); display: flex; justify-content: center; align-items: center;">
+                <div data-testid="watch-loading" aria-label="watch-loading" aria-busy="true" role="status"
+                     style="display: flex;">
+                    <svg width="80" height="80" version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"
+                         data-testid="watch-svg"><circle fill="none" stroke="white" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"></circle>
+                        <line
+                                fill="none" stroke-linecap="round" stroke="white" stroke-width="4"
+                                stroke-miterlimit="10"
+                                x1="50" y1="50" x2="85" y2="50.5"><animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></line>
+                        <line
+                                fill="none" stroke-linecap="round" stroke="white" stroke-width="4"
+                                stroke-miterlimit="10"
+                                x1="50" y1="50" x2="49.5" y2="74"><animateTransform attributeName="transform" dur="15s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></line></svg>
+                </div>
+            </div>
+            <p>Front of {{ request.GET.document_type }}</p>
+            <div style="width: 150px; height: 150px; clip-path: circle(at 50% 50%); background: linear-gradient(rgb(0, 90, 170) 100%, rgb(11, 71, 124) 100%); display: flex; justify-content: center; align-items: center;">
+                <div data-testid="watch-loading" aria-label="watch-loading" aria-busy="true" role="status"
+                     style="display: flex;">
+                    <svg width="80" height="80" version="1.1" id="L2" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                         viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve"
+                         data-testid="watch-svg"><circle fill="none" stroke="white" stroke-width="4" stroke-miterlimit="10" cx="50" cy="50" r="48"></circle>
+                        <line
+                                fill="none" stroke-linecap="round" stroke="white" stroke-width="4"
+                                stroke-miterlimit="10"
+                                x1="50" y1="50" x2="85" y2="50.5"><animateTransform attributeName="transform" dur="2s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></line>
+                        <line
+                                fill="none" stroke-linecap="round" stroke="white" stroke-width="4"
+                                stroke-miterlimit="10"
+                                x1="50" y1="50" x2="49.5" y2="74"><animateTransform attributeName="transform" dur="15s" type="rotate" from="0 50 50" to="360 50 50" repeatCount="indefinite"></animateTransform></line></svg>
+                </div>
+            </div>
+            {#            {% if has_back %}#}
+            {#                <p>Back of {{ request.GET.document_type }}</p>#}
+            {#                <div#}
+            {#                    style={{#}
+            {#                            width: "150px",#}
+            {#                            height: "150px",#}
+            {#                            clipPath: "circle()",#}
+            {#                            background: "linear-gradient(#005aaa 100%, #0b477c 100%)",#}
+            {#                            display:"flex",#}
+            {#                            justifyContent:"center",#}
+            {#                            alignItems:"center"#}
+            {#                            }}#}
+            {#                >#}
+            {#                <img src="{% static 'images/tick.png' %}" style='width:70px' alt="tick"/>#}
+            {#                    <img src="{{ identity.temp_back.url }}" style='width:180px' alt="tick"/>#}
+            {#                </div>#}
+            {#            {% endif %}#}
+            <p>Face Photo</p>
+            <span id="num"
+                  style="color: white; background: linear-gradient(rgb(0, 90, 170) 100%, rgb(11, 71, 124) 100%); width: 50px; height: 50px; clip-path: circle(at 50% 50%); display: flex; justify-content: center; align-items: center;">5</span>
+
+            <div id="next" class="next_btn" style="display: none"
+                 onclick="location.href=`{% url 'verification:eighth-page' %}?{{ request.GET.urlencode }}`">
+                Next
+                <div class="next_btn-c">
+                    <div class="fp-b-c fas fa-search">
+                        <i class="bi bi-arrow-right-short" style="color: #005aaa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extrajs %}
+    <script>
+        let remaining = 3;
+
+        function countdown() {
+            let num = document.getElementById('num');
+            let next = document.getElementById('next');
+            num.innerHTML = remaining;
+            if (!remaining--) {
+                next.click();
+                num.remove();
+                return; // not needed if you redirect
+            }
+            setTimeout(countdown, 1000);
+        }
+
+        window.onload = countdown;
+    </script>;
+{% endblock %}

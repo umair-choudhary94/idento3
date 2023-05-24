@@ -1,0 +1,71 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="content">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+            <div id="signUpForm">
+                <div class="form-header d-flex mb-4">
+                    <span class="stepIndicator active">
+                        <span>1</span>
+                    </span>
+                    <span class="stepIndicator">2</span>
+                    <span class="stepIndicator">3</span>
+                    <span class="stepIndicator">4</span>
+                    <span class="stepIndicator">5</span>
+                    <span class="stepIndicator">6</span>
+                </div>
+            </div>
+            <h3>Select the country of your card issuer</h3>
+            <div id="dropdown" onclick="
+                         let e = document.getElementsByClassName('jdropdown-selected')[0].getElementsByClassName('jdropdown-description')[0];
+                         let text = e.innerText;
+                         let element = document.getElementById('next');
+                         element.classList.remove('non-active');
+            "
+            ></div>
+
+            <div class="next_btn non-active" id="next"
+                 onclick="
+                         let e = document.getElementsByClassName('jdropdown-selected')[0].getElementsByClassName('jdropdown-description')[0];
+                         let text = e.innerText;
+                         location.href=`{% url 'verification:third-page' %}?{{ request.GET.urlencode }}&country=${text}`;
+
+                         ">
+                Next
+                <div class="next_btn-c non-active">
+                    <div class="fp-b-c fas fa-search">
+                        <i class="bi bi-arrow-right-short" style="color: #005aaa"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extrajs %}
+    <script src="https://jsuites.net/v4/jsuites.js"></script>
+
+    <script>
+        let countries;
+        $.ajax({
+            url: "/verification/get_countries/",
+            type: "GET",
+            dataType: "json",
+            success: (jsonResponse) => {
+                countries = jsonResponse.data;
+                {#console.log(;#}
+                jSuites.dropdown(document.getElementById('dropdown'), {
+                    data: jsonResponse.data,
+                    autocomplete: true,
+                    multiple: false,
+                    width: '400px',
+                });
+            },
+            error: (jsonResponse) => alert("Failed to call api " + endpoint + "!" + jsonResponse.data.errorMesssage + json.errorMesssage)
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,160 @@
+{% extends "web/base_form_page.html" %}
+{% load static %}
+
+{% block title %}
+    {% if request.GET.success %}
+        <div class="alert alert-success alert-dismissible">
+            Your account has been created successfully. In order to activate it, follow the instructions sent to your
+            email address.
+        </div>
+
+        <br>
+        <br>
+    {% endif %}
+    <h2>Checkout</h2>
+    <span>You are about to purchase the following plan:</span>
+
+    <section id="pricing" class="pricing" style="padding:0; margin-top:20px">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="box recommended" data-aos="zoom-in-right"
+                         data-aos-delay="80">
+                        <h3>{{ plan.title }}</h3>
+                        <h4><sup>{{ plan.currency.symbol }}</sup>{{ plan.price }}<span> / month</span></h4>
+                        <ul>
+                            {% for d in plan.desc %}
+                                <li>{{ d }}</li>
+                            {% endfor %}
+                        </ul>
+
+                        {#                        <div class="btn-wrap">#}
+                        {#                            <a value="{{ plan.title }}" id="{{ plan.title }}" class="btn-select-plan btn-buy"#}
+                        {#                               onclick="#}
+                        {#                                       let hiddenElem = document.getElementById('id_plan');#}
+                        {#                                       hiddenElem.value = {{ plan.plan_title }};#}
+                        {#                                       var x = document.getElementsByClassName('box')#}
+                        {#                                       for (var i = 0; i < x.length; i++) {#}
+                        {#                                       x[i].addEventListener('click', function() {#}
+                        {##}
+                        {#                                       var selectedEl = document.querySelector('.recommended');#}
+                        {#                                       if (selectedEl && selectedEl !== this) {#}
+                        {#                                       selectedEl.classList.remove('recommended');#}
+                        {#                                       }#}
+                        {#                                       // Toggle this#}
+                        {#                                       this.classList.toggle('recommended');#}
+                        {#                                       }, false);}#}
+                        {#                                       ">Select</a>#}
+                        {#                        </div>#}
+                    </div>
+                    <br>
+
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in-right"
+                     data-aos-delay="80">
+                    <div class="card">
+                        <div class="card-body mx-4">
+                            <div class="container">
+                                <div class="row">
+                                    <ul class="list-unstyled">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#2255e6"
+                                             class="bi bi-cart" viewBox="0 0 16 16">
+                                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                        </svg>
+                                        <br>
+                                        <br>
+                                        <li class="text-muted mt-1"><span class="text-black">Invoice</span> #12345</li>
+                                        <li class="text-muted mt-1"><span
+                                                class="text-black">Issue Date</span> {% now "Y-m-d" %}</li>
+                                        <li class="text-black mt-1"></li>
+                                    </ul>
+                                    <hr>
+                                    <div class="col-xl-10">
+                                        <p>{{ plan }} Plan</p>
+                                    </div>
+                                    <div class="col-xl-2">
+                                        <p class="float-end">{{ plan.currency.symbol }}{{ plan.price }}.00
+                                        </p>
+                                    </div>
+                                    <hr>
+                                </div>
+                                {#      <div class="row">#}
+                                {#        <div class="col-xl-10">#}
+                                {#          <p>Support</p>#}
+                                {#        </div>#}
+                                {#        <div class="col-xl-2">#}
+                                {#          <p class="float-end">$10.00#}
+                                {#          </p>#}
+                                {#        </div>#}
+                                {#        <hr style="border: 2px solid black;">#}
+                                {#      </div>#}
+                                <div class="row text-black">
+
+                                    <div class="col-xl-12">
+                                        <p class="float-end fw-bold">Total: {{ plan.currency.symbol }}{{ plan.price }}.00
+                                        </p>
+                                    </div>
+                                    <hr style="border: 2px solid black;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card" style="background: #fff" data-aos="zoom-in-right" data-aos-delay="80">
+                        <br>
+                        <div class="row">
+                            {% for gateway in gateways %}
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-check" style="text-align: left;
+                                            {% if forloop.first %}padding-left: 45px{% endif %}">
+                                        <input class="form-check-input"
+                                               style="float: unset; margin: 0; vertical-align:unset"
+                                               {% if forloop.first %}checked{% endif %}
+                                               type="radio" name="flexRadioDefault"
+                                               id="flexRadioDefault1">
+                                        <img src="{{ gateway.icon.url }}" width="64" height="64"/>
+
+                                        <label class="form-check-label" for="flexRadioDefault1">
+
+                                        </label>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <form method="post" role="form" class="email-form">
+                            {% csrf_token %}
+                            <br>
+                            <div class="form-group">
+                                <a class="btn-select-plan btn-buy" href="{% url 'web:payment_success' %}?plan={{ plan.title }}">
+                                    <button class="btn-submit" type="button">
+                                        Checkout and Pay {{ plan.currency.symbol }}{{ plan.price }}.00
+                                    </button>
+                                </a>
+                            </div>
+                        </form>
+{#                        <button class="button is-primary" id="submitBtn">Purchase!</button>#}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <br>
+        </div>
+        </div>
+    </section><!-- End Pricing Section -->
+
+{% endblock %}
+
+{% block form_section %}
+
+{% endblock %}
+
+{% block extrajs %}
+    {#        <script>alert('HI')</script>#}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="{% static 'js/payments.js' %}"></script>   <!-- new -->
+{% endblock %}

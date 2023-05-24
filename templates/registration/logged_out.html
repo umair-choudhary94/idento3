@@ -1,0 +1,20 @@
+{% extends "web/base_form_page.html" %}
+{% load static %}
+
+{% block title %}
+    <h2>Logged Out</h2>
+    <span>You've now been logged out of your account.</span>
+    <p>
+        <a class="btn-select-plan btn-buy" href="{% url 'web:login' %}">
+            <button class="btn-submit" type="button">Login</button>
+        </a>
+    </p>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+{% endblock %}
+{% block form_section %}
+{% endblock %}

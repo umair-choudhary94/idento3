@@ -1,0 +1,64 @@
+{% extends "verification/base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="m">
+        <div class="content final">
+            <div class="fp-m-c">
+                <img src="{% static 'images/logo-blue.jpg' %}" alt="logo"/>
+            </div>
+
+            {% if identity.is_verified %}
+                <h3>Identification Succeeded</h3>
+            {% else %}
+                <h3>Identification Failed</h3>
+            {% endif %}
+
+            <div style="text-align:center">
+                {#        <img src="../../../tick.png" style={{ width: "70px" }} alt="tick" />#}
+
+                <img src="{% if identity.is_verified %}{% static 'images/tick.png' %}{% else %}{% static 'web/images/cross.png' %}{% endif %}"
+                     style='width:70px' alt="tick"/>
+                <br>
+                <br>
+                {% if identity.is_verified %}
+                    <a class="btn-select-plan btn-buy"
+                       href="{% url 'dashboard_admin:dashboard_myidentity_changelist' %}">
+                        <button class="btn-submit" type="button">Go to Dashboard</button>
+                    </a>
+                {% else %}
+                    <a class="btn-select-plan btn-buy"
+                       href="{% url 'verification:fifth-page' %}?identifier={{ identity.identifier }}&xid={{ identity.xid }}&document_type={{ identity.document_type }}&country={{ identity.card_issuer.country.name }}">
+                        <button class="btn-submit" type="button">Try Again</button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block extrajs %}
+    <script>
+        let remaining = 1;
+
+        function countdown() {
+            let num = document.getElementById('num');
+            num.innerHTML = remaining;
+            if (!remaining--) {
+                document.getElementById('startbutton').click();
+                let video = document.getElementById('video');
+                let foto = document.getElementById('foto');
+                let retake = document.getElementById('retake');
+                document.getElementById('foto').style.display = "initial";
+                document.getElementById('retake').style.display = "inherit";
+                video.replaceWith(foto);
+                num.remove();
+                return; // not needed if you redirect
+            }
+            setTimeout(countdown, 1000);
+        }
+
+        window.onload = countdown;
+    </script>;
+{% endblock %}

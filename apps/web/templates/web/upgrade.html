@@ -1,0 +1,39 @@
+{% extends "web/base_form_page.html" %}
+{% load static %}
+
+{% block title %}
+    <h2>Upgrade Plan</h2>
+    <span>Select one of the plans to continue:</span>
+    <br>
+    <br>
+    <section id="pricing" class="pricing" style="padding:0">
+        <div class="container">
+            <div class="row">
+                {% for plan in plans %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="box" data-aos="zoom-in-right"
+                             data-aos-delay="80">
+                            <h3>{{ plan.title }}</h3>
+                            <h4><sup>{{ plan.currency.symbol }}</sup>{{ plan.price }}<span> / month</span></h4>
+                            <ul>
+                                {% for d in plan.desc %}
+                                    <li>{{ d }}</li>
+                                {% endfor %}
+                            </ul>
+
+                            <div class="btn-wrap">
+                                <a value="{{ plan.title }}" id="{{ plan.title }}" class="btn-select-plan btn-buy"
+                                   href="{% url 'web:checkout' %}?plan={{ plan.title }}">Select</a>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Pricing Section -->
+{% endblock %}
+
+{% block form_section %}
+
+{% endblock %}
